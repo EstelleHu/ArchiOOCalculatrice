@@ -1,5 +1,6 @@
 package server.operation;
 
+
 public class Division extends Operation {
 	
 	
