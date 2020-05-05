@@ -40,11 +40,12 @@ public class ApplicationClient {
         }).start();
         try {
             while(true) {
-                view.afficher(appProp.readProperty("OPERATION", "default"),appProp.readProperty("RESULTAT", "default"));
+                view.afficher();
             }
         } catch (ClassNotFoundException | IOException | InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
+
 }

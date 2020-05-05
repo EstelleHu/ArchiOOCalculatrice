@@ -17,12 +17,12 @@ public class Interface {
     private CalculatriceController controller;
     private static Scanner scanner = new Scanner (System.in);
 
-    public void afficher(String operation, String resultat) throws UnknownHostException, ClassNotFoundException, IOException, InterruptedException {
+    public void afficher() throws UnknownHostException, ClassNotFoundException, IOException, InterruptedException {
         String ope;
-        System.out.println(operation +" : ");
+        System.out.println(appProp.readProperty("OPERATION", "default"));
         ope = scanner.nextLine();
         OperationModel operationMod = new OperationModel(ope);
-        System.out.println(resultat+ " : " + RequeteCalculatrice.call(operationMod).getResult());
+        System.out.println(appProp.readProperty("RESULTAT", "default") + RequeteCalculatrice.call(operationMod).getResult());
 
     }
 
