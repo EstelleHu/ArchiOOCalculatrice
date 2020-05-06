@@ -1,6 +1,7 @@
 package server.controller;
 
 
+import calculatrice.utils.ExceptionEnum;
 import client.controller.CalculatriceController;
 import client.model.OperationModel;
 import client.view.Interface;
@@ -27,7 +28,15 @@ public class Calculate {
 	}
 
 	public static OperationModel calculate(OperationModel operation) throws CalculatriceException {
-		operation.setResult(Calculate.checkOpe(operation.getOperande(), operation.getA(),operation.getB()));
+
+		try {
+			operation.setResult(Calculate.checkOpe(operation.getOperande(), operation.getA(),operation.getB()));
+			
+		}catch(CalculatriceException e) {
+			operation.setStatus("failed");
+			operation.setErrorCode(e.getCode());
+			
+		}
 		return operation;
 		
 		

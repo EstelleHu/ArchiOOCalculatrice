@@ -26,13 +26,7 @@ public class CalculatriceController {
 		view.afficherResultat(model.calculer(a,b));
 	}
 	
-	public Interface getInterf() {
-		return view;
-	}
-	
-	public void setInterf(Interface interf) {
-		this.view = interf;
-	}
+
 
 }
 	

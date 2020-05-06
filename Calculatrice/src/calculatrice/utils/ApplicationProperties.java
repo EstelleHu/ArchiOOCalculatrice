@@ -21,23 +21,25 @@ public class ApplicationProperties {
 
         
         private ApplicationProperties (String fileName) {
-                prop = new Properties();
+                prop = new Properties(); 
                 InputStream input = null;
 
                 try {
-                        input = new FileInputStream(fileName);
-                        prop.load(input);
+                    input = new FileInputStream(fileName);
+                    prop.load(input);
                 } catch (FileNotFoundException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
+                	System.out.println(e.getMessage());
                 } catch (IOException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
+                     System.out.println(e.getMessage());
                 }
         }
-        
+         
         public static String readProperty(String property, String defaultMessage) {
-                //TODO: When property doesnt exist, show default
+        	for(String key : prop.stringPropertyNames()) {
+        		  if(key == property) {
+						return prop.get(property).toString();
+					}
+				}
                 if (null != property)
                         return prop.get(property).toString();
                 else 

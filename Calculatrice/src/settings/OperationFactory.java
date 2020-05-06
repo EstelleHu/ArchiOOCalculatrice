@@ -10,5 +10,5 @@ public class OperationFactory {
 		return ApplicationConfig.operationByChar.get(ope);
 		
 	}
-
+ 
 }

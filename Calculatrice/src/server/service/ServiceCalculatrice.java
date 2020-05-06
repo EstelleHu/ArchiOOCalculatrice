@@ -29,7 +29,7 @@ public class ServiceCalculatrice {
             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
-        	
+        	 
             OperationModel operation = (OperationModel) ois.readObject();
             LOGGER.log(Level.INFO, "Message Received: " + operation);
 

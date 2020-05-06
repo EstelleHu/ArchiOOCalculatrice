@@ -9,17 +9,18 @@ public class OperationModel implements Serializable {
 	
 	private float a;
 	private float b;
-	Operation ope;
-	int errorCode;
-	public Operation getOpe() {
-		return ope;
+	private int errorCode;
+	private String status;
+	private String operande;
+	float result;
+	
+
+
+	public String getStatus() {
+		return status;
 	}
 
-	public void setOpe(Operation ope) {
-		this.ope = ope;
-	}
-	String operande;
-	float result;
+
 	public OperationModel(String operation) {
 		String regex = "(\\+|\\-|\\*|\\/)";
 		String[] tokens = operation.split(regex);
@@ -43,9 +44,7 @@ public class OperationModel implements Serializable {
 		return operande;
 	}
 
-	public void setOperande(String operande) {
-		this.operande = operande;
-	}
+
 
 	public float getResult() {
 		return result;
@@ -58,21 +57,30 @@ public class OperationModel implements Serializable {
 	public float getA() {
 		return a;
 	}
-	public void setA(float a) {
-		this.a = a;
-	}
+
 	public float getB() {
 		return b;
 	}
-	public void setB(float b) {
-		this.b = b;
-	}
+
 	public int getErrorCode() {
 		return this.errorCode;
 	}
 	public void setErrorCode(int errorCode) {
 		this.errorCode = errorCode;
 	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+	@Override
+	public String toString() {
+		return "OperationModel [a=" + a + ", b=" + b +  ", errorCode=" + errorCode + ", status="
+				+ status + ", operande=" + operande + ", result=" + result + "]";
+	}
+	
+	
 }
 
 

@@ -5,6 +5,7 @@ import java.net.UnknownHostException;
 import java.util.Scanner;
 
 import calculatrice.utils.ApplicationProperties;
+import calculatrice.utils.ExceptionEnum;
 import client.controller.CalculatriceController;
 import client.model.OperationModel;
 import client.service.RequeteCalculatrice;
@@ -17,13 +18,20 @@ public class Interface {
     private CalculatriceController controller;
     private static Scanner scanner = new Scanner (System.in);
 
-    public void afficher() throws UnknownHostException, ClassNotFoundException, IOException, InterruptedException {
+    @SuppressWarnings("static-access")
+	public void afficher() throws UnknownHostException, ClassNotFoundException, IOException, InterruptedException {
         String ope;
         System.out.println(appProp.readProperty("OPERATION", "default"));
         ope = scanner.nextLine();
         OperationModel operationMod = new OperationModel(ope);
-        System.out.println(appProp.readProperty("RESULTAT", "default") + RequeteCalculatrice.call(operationMod).getResult());
-
+       
+        OperationModel m = RequeteCalculatrice.call(operationMod);
+        if((m.getStatus())==null) {
+        	System.out.println(appProp.readProperty("RESULTAT", "default") + m.getResult());
+        	  
+        }else {
+        	System.out.println(appProp.readProperty(ExceptionEnum.getNameFromCode(m.getErrorCode()), "default"));
+        }
     }
 
     public void afficherResultat(float res) {
